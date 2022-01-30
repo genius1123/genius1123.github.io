@@ -152,6 +152,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-如何使用JS自定义一个栈以及使用栈进行回文判断" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/30/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8JS%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E6%A0%88%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%A0%88%E8%BF%9B%E8%A1%8C%E5%9B%9E%E6%96%87%E5%88%A4%E6%96%AD/">如何使用JS自定义一个栈以及使用栈进行回文判断</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/30/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8JS%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E6%A0%88%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%A0%88%E8%BF%9B%E8%A1%8C%E5%9B%9E%E6%96%87%E5%88%A4%E6%96%AD/" class="archive-article-date">
+  	<time datetime="2022-01-30T06:32:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="如何使用JS自定义一个栈以及使用栈进行回文判断"><a href="#如何使用JS自定义一个栈以及使用栈进行回文判断" class="headerlink" title="如何使用JS自定义一个栈以及使用栈进行回文判断"></a>如何使用JS自定义一个栈以及使用栈进行回文判断</h2><h3 id="栈的定义"><a href="#栈的定义" class="headerlink" title="栈的定义"></a>栈的定义</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义栈</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Stack</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.dataStore = [];    <span class="comment">//初始化为空</span></span><br><span class="line">    <span class="built_in">this</span>.top = <span class="number">0</span>;           <span class="comment">//记录栈顶位置</span></span><br><span class="line">    <span class="built_in">this</span>.pop = pop;         <span class="comment">//出栈</span></span><br><span class="line">    <span class="built_in">this</span>.push = push;       <span class="comment">//入栈</span></span><br><span class="line">    <span class="built_in">this</span>.peek = peek;       <span class="comment">//查看栈顶元素</span></span><br><span class="line">    <span class="built_in">this</span>.length = length;   <span class="comment">//查看栈内元素总数</span></span><br><span class="line">    <span class="built_in">this</span>.clear = clear;     <span class="comment">//清空栈</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//该方法将一个新元素入栈，放到数组中 top 所对应的位置上，并将 top 的值加 1，让其指向数组的下一个空位置</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.dataStore[<span class="built_in">this</span>.top++] = element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//该方法与入栈相反，返回栈顶元素，并将 top 的值减 1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pop</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.dataStore[--<span class="built_in">this</span>.top];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//该方法返回的是栈顶元素，即 top - 1 个位置元素</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">peek</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.top &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">this</span>.dataStore[<span class="built_in">this</span>.top - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="string">&#x27;Empty&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clear</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">delete</span> <span class="built_in">this</span>.dataStore;</span><br><span class="line">    <span class="built_in">this</span>.dataStore = [];</span><br><span class="line">    <span class="built_in">this</span>.top = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">length</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="回文判断"><a href="#回文判断" class="headerlink" title="回文判断"></a>回文判断</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isPalindrome = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">    a = x.toString();</span><br><span class="line">    <span class="keyword">var</span> s = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; a.length; i++) &#123;</span><br><span class="line">        s.push(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> rword = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">while</span> (s.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        rword += s.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a == rword) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/30/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8JS%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E6%A0%88%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%A0%88%E8%BF%9B%E8%A1%8C%E5%9B%9E%E6%96%87%E5%88%A4%E6%96%AD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-全选和取消全选" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -224,10 +288,9 @@
         <p>#Markdown语法</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  python代码块</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#这是一级标题</span><br><span class="line">##这是二级标题</span><br><span class="line">###这是三级标题</span><br><span class="line">####这是四级标题</span><br><span class="line">#####这是五级标题</span><br><span class="line">######这是六级标题</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br><span class="line">#### 这是四级标题</span><br><span class="line">##### 这是五级标题</span><br><span class="line">###### 这是六级标题</span><br></pre></td></tr></table></figure>
 <hr>
-<p>#这是一级标题<br>##这是二级标题<br>###这是三级标题<br>####这是四级标题<br>#####这是五级标题<br>######这是六级标题</p>
-<hr>
+<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="这是四级标题"><a href="#这是四级标题" class="headerlink" title="这是四级标题"></a>这是四级标题</h4><h5 id="这是五级标题"><a href="#这是五级标题" class="headerlink" title="这是五级标题"></a>这是五级标题</h5><h6 id="这是六级标题"><a href="#这是六级标题" class="headerlink" title="这是六级标题"></a>这是六级标题</h6><hr>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#图片引用</span></span><br><span class="line">![图片名称](图片地址)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>I really like using Markdown.</p>
 
